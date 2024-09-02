@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <style>
+    section {
+        padding: 5px;
+    }
+
+    #fibo {
+    background-image: linear-gradient(to bottom, rgb(94, 94, 246), rgb(50, 47, 231));
+    }
+
+    #stri {
+        background-color: chocolate;
+    }
+
+    #indi {
+        background-color: rgb(240, 53, 53);
+    }
+
+    #logi {
+        background-color: rgb(226, 50, 229);
+    }
+
+    #inte {
+        background-color: rgb(252, 249, 46);
+    }
+
+    a {
+    color: white;
+    }
+
+    a:hover {
+    color: black;
+    transition-duration: 2s;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="fibo">
+            <h1>Exercício 1</h1>
+            <h3>Fibonacci</h3>
+            <p>Digite um número e verifique se ele está na sequência de <a href="https://brasilescola.uol.com.br/matematica/sequencia-fibonacci.htm">Fibonacci</a>
+            </p>
+            <input 
+            type="number" id="n">
+            <input 
+            id="fiboBu"
+            type="button" 
+            value="Enviar" 
+            onclick="Fibonacci()">
+        </section>
+        <section id="stri">
+            <h1>Exercício 2</h1>
+            <h3>Letra A</h3>
+            <p>Insira uma palavra e veja quantos a's ele possui e quantas maiúsculos ele possui.</p>
+            <input 
+            id="letr"
+            type="text">
+            <input 
+            type="button" 
+            value="Enviar"
+            onclick="letraA()">
+        </section>
+        <section id="indi">
+            <h1>Exercício 3</h1>
+            <h3>Trecho de código:</h3>
+            <p style="background-color: white; padding: 2px; border-radius: 3px; box-shadow: 3px 3px 3px rgb(178, 42, 42);">int INDICE = 12, SOMA = 0, K = 1; enquanto K for menor que INDICE faça K recebe K + 1 e SOMA recebe SOMA + K e imprima o valor de SOMA</p>
+            <input type="button" value="Ver valor" onclick="trecho()">
+        </section>
+        <section id="logi">
+            <h1>Exercício 4</h1>
+            <h3>Lógica</h3>
+            <ul>
+                <li>1, 3, 5, 7, <strong>9</strong>;</li>
+                <li>2, 4, 8, 16, 32, 64, <strong>128</strong>;</li>
+                <li>0, 1, 4, 9, 16, 25, 36, <strong>49</strong>;</li>
+                <li>4, 16, 36, 64, <strong>100</strong>;</li>
+                <li>1, 1, 2, 3, 5, 8, <strong>13</strong>;</li>
+                <li>2, 10, 12, 16, 17, 18, 19, <strong>200</strong>.</li>
+            </ul>
+        </section>
+        <section id="inte">
+            <h1>Exercício 5</h1>
+            <h3>Desafio dos interruptores</h3>
+            <p>Como eu tenho duas idas, posso gastar uma delas ligando a primeira lâmpada e esperar um determinado tempo para ela esquentar, em seguida, ligo o próximo interruptor e chego a conclusão que a segunda lâmpada que ligar é controlada pelo segundo interruptor e a lâmpada que estiver quente, é controlada pelo primeiro interruptor. Enquanto a fria e desligada é controlada pelo terceiro.</p>
+        </section>
+    </main>
+</body>
+<script>
+    function pertenceAFibonacci(numero) {
+        if (numero < 0) return false;
+
+        let a = 0, b = 1;
+        while (a <= numero) {
+            if (a === numero) return true;
+            [a, b] = [b, a + b];
+        }
+        return false;
+    }
+
+    function Fibonacci() {
+        let nu = document.getElementById('n');
+        let nume = parseInt(nu.value, 10);
+        if (isNaN(nume)) {
+            alert("Por favor, insira um número válido.");
+        } else if (pertenceAFibonacci(nume)) {
+            alert(`O número ${nume} faz parte da sequência de Fibonacci.`);
+        } else {
+            alert(`O número ${nume} não faz parte da sequência de Fibonacci.`);
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function letraA() {
+        var letter = document.getElementById('letr').value;
+        var quantidade = 0;
+        for(var i = 0; i < letter.length; i++) {
+            if(letter.charAt(i) == "a" || letter.charAt(i) == "A") {
+                quantidade++
+            }
+        }
+        alert(`A sua palavra possui ${quantidade} a's.`)
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function trecho() {
+        let INDICE = 12;
+        let SOMA = 0;
+        let K = 1
+        while (K < INDICE) {
+            K = K + 1;
+            SOMA = SOMA + K;
+        }
+        alert(`O valor de SOMA é ${SOMA}.`);
+    }
+</script>
+</html>
